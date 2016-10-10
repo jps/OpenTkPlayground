@@ -17,7 +17,7 @@ namespace OpenTkPlayground
         {
             _vertexSize = vertexSize;
 
-            // generate the actual Vertex Buffer Object
+            // generate the actual ColouredVertex Buffer Object
             _handle = GL.GenBuffer();
         }
 

@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Linq;
 using OpenTkPlayground.Uniforms;
 using OpenTK;
 using OpenTK.Graphics;
@@ -9,7 +11,7 @@ namespace OpenTkPlayground
     internal sealed class Program
     {
         public static void Main(string[] args)
-        {            
+        {    
             using (var win = new GameWindow(1280, 720, GraphicsMode.Default, "OpenTK Intro",
                 GameWindowFlags.Default, DisplayDevice.Default,
                 // ask for an OpenGL 3.0 forward compatible context
@@ -22,12 +24,6 @@ namespace OpenTkPlayground
 
                 win.Load += (s, e) =>
                 {
-                    // create and fill a vertex buffer
-                    vertexBuffer = new VertexBuffer<ColouredVertex>(ColouredVertex.Size);
-                    vertexBuffer.AddVertex(new ColouredVertex(new Vector3(-1, -1, -1.5f), Color4.Lime));
-                    vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1, 1, -1.5f), Color4.Red));
-                    vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1, -1, -1.5f), Color4.Blue));
-
                     var vertexShader = new Shader(ShaderType.VertexShader,
                         File.ReadAllText(@"../../VertexShaders/vertex-shader.vs"));
                     var fragmentShader = new Shader(ShaderType.FragmentShader,
@@ -35,14 +31,7 @@ namespace OpenTkPlayground
 
                     // link shaders into shader program
                     shaderProgram = new ShaderProgram(vertexShader, fragmentShader);
-
-                    // create vertex array to specify vertex layout
-                    vertexArray = new VertexArray<ColouredVertex>(
-                        vertexBuffer, shaderProgram,
-                        new VertexAttribute("vPosition", 3, VertexAttribPointerType.Float, ColouredVertex.Size, 0),
-                        new VertexAttribute("vColor", 4, VertexAttribPointerType.Float, ColouredVertex.Size, 12)
-                        );
-
+                    
                     // create projection matrix uniform
                     projectionMatrix = new Matrix4Uniform("projectionMatrix")
                     {
@@ -82,9 +71,35 @@ namespace OpenTkPlayground
                 {
                     GL.Viewport(0, 0, win.Width, win.Height);
                 };
+
+                long updateCount = 0;
+                var random = new Random();
+                
+
                 win.UpdateFrame += (s, e) =>
                 {
-                    // this is called every frame, put game logic here
+                    
+
+                    // create and fill a vertex buffer
+                    vertexBuffer = new VertexBuffer<ColouredVertex>(ColouredVertex.Size);
+
+                    foreach (var i in Enumerable.Range(0, random.Next(100, 1000)))
+                    {                        
+                        vertexBuffer.AddVertex(new ColouredVertex(new Vector3(-1f * (0.01f * updateCount), -1, -i), Color4.Lime));
+                        vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1, 1, -i), Color4.Red));
+                        vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1f * (0.01f * updateCount), -1, -i), Color4.Blue));
+                    }
+                    
+                    
+
+                    // create vertex array to specify vertex layout
+                    vertexArray = new VertexArray<ColouredVertex>(
+                        vertexBuffer, shaderProgram,
+                        new VertexAttribute("vPosition", 3, VertexAttribPointerType.Float, ColouredVertex.Size, 0),
+                        new VertexAttribute("vColor", 4, VertexAttribPointerType.Float, ColouredVertex.Size, 12)
+                        );
+
+                    ++updateCount;
                 };                
 
                 win.Run();
