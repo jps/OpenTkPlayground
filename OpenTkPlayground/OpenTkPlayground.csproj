@@ -62,10 +62,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="VertexShaders\vertex-shader.vs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="FragmentShaders\" />
-    <Folder Include="VertexShaders\" />
+    <Content Include="FragmentShaders\fragment-shader.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
