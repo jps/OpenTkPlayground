@@ -1,6 +1,4 @@
-﻿using OpenTK;
-
-namespace OpenTkPlayground.Geometry
+﻿namespace OpenTkPlayground.Geometry.WingedEdge
 {
     public class WingedEdge
     {

@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using OpenTK;
-using OpenTK.Graphics;
 
-namespace OpenTkPlayground.Geometry
+namespace OpenTkPlayground.Geometry.WingedEdge
 {
     public class WingedEdgeVertex
     {    

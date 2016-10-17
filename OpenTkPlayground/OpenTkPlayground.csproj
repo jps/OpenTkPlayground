@@ -50,10 +50,13 @@
     <Compile Include="ColouredVertex.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
     <Compile Include="GameObjects\Cube.cs" />
-    <Compile Include="GameObjects\Tetrahedon.cs" />
-    <Compile Include="Geometry\WingedEdge.cs" />
-    <Compile Include="Geometry\WingedEdgeFace.cs" />
-    <Compile Include="Geometry\WingedEdgeVertex.cs" />
+    <Compile Include="GameObjects\Tetrahedron.cs" />
+    <Compile Include="Geometry\DCEL\DcelHalfEdge.cs" />
+    <Compile Include="Geometry\DCEL\DcelFace.cs" />
+    <Compile Include="Geometry\DCEL\DcelVertex.cs" />
+    <Compile Include="Geometry\WingedEdge\WingedEdge.cs" />
+    <Compile Include="Geometry\WingedEdge\WingedEdgeFace.cs" />
+    <Compile Include="Geometry\WingedEdge\WingedEdgeVertex.cs" />
     <Compile Include="Helpers\RandomColorGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
