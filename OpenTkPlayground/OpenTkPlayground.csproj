@@ -49,10 +49,12 @@
   <ItemGroup>
     <Compile Include="ColouredVertex.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
-    <Compile Include="GameObjects\Triangle.cs" />
+    <Compile Include="GameObjects\Cube.cs" />
+    <Compile Include="GameObjects\Tetrahedon.cs" />
     <Compile Include="Geometry\WingedEdge.cs" />
     <Compile Include="Geometry\WingedEdgeFace.cs" />
     <Compile Include="Geometry\WingedEdgeVertex.cs" />
+    <Compile Include="Helpers\RandomColorGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shader.cs" />

@@ -9,16 +9,23 @@ using OpenTK.Graphics;
 
 namespace OpenTkPlayground.GameObjects
 {
-    public class Triangle : GameObject
+    public class Cube : GameObject
     {
-        public Triangle()
+        public Cube()
         {
-            var random = new Random();
-            random.Next(1000);
+            var vectors = new List<Vector3>()
+            {
+                new Vector3(0, 0, 0),
+                new Vector3(1, 0, 0),
+                new Vector3(1, 1, 0),
+                new Vector3(0, 1, 0),
+                new Vector3(0, 0, 1),
+                new Vector3(1, 0, 1),
+                new Vector3(1, 1, 1),
+                new Vector3(0, 1, 1)
+            };
 
-            var edge1 = new WingedEdge();
-            var edge2 = new WingedEdge();
-            var edge3 = new WingedEdge();
+
 
             //var wev1 = new WingedEdgeVertex
             //{
