@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using OpenTkPlayground.GameObjects;
 using OpenTkPlayground.Uniforms;
 using OpenTK;
 using OpenTK.Graphics;
@@ -83,14 +84,18 @@ namespace OpenTkPlayground
                     // create and fill a vertex buffer
                     vertexBuffer = new VertexBuffer<ColouredVertex>(ColouredVertex.Size);
 
-                    foreach (var i in Enumerable.Range(0, random.Next(100, 1000)))
-                    {                        
-                        vertexBuffer.AddVertex(new ColouredVertex(new Vector3(-1f * (0.01f * updateCount), -1, -i), Color4.Lime));
-                        vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1, 1, -i), Color4.Red));
-                        vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1f * (0.01f * updateCount), -1, -i), Color4.Blue));
-                    }
-                    
-                    
+                    //foreach (var i in Enumerable.Range(0, random.Next(100, 1000)))
+                    //{                        
+                    //    vertexBuffer.AddVertex(new ColouredVertex(new Vector3(-1f * (0.01f * updateCount), -1, -i), Color4.Lime));
+                    //    vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1, 1, -i), Color4.Red));
+                    //    vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1f * (0.01f * updateCount), -1, -i), Color4.Blue));
+                    //}
+
+                    var tetrahedron = new RegularTetrahedron();
+
+                    tetrahedron.Draw(vertexBuffer);
+
+
 
                     // create vertex array to specify vertex layout
                     vertexArray = new VertexArray<ColouredVertex>(
