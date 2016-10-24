@@ -15,14 +15,14 @@ namespace OpenTkPlayground.GameObjects
             var random = new Random();
             random.Next(1000);
 
-            const int l = 1; 
+            const float l = 0.20f; 
 
             var vertices = new[]
             {
                 new DcelVertex(new ColouredVertex(new Vector3(0,          0,  0), RandomColorGenerator.NextColor())),
                 new DcelVertex(new ColouredVertex(new Vector3(l,          0,  0), RandomColorGenerator.NextColor())),
-                new DcelVertex(new ColouredVertex(new Vector3(l/2f,       0,  l), RandomColorGenerator.NextColor())),
-                new DcelVertex(new ColouredVertex(new Vector3((1.5f*l)/3, l,  l/3f), RandomColorGenerator.NextColor()))
+                new DcelVertex(new ColouredVertex(new Vector3(l/2f,       0,  -l), RandomColorGenerator.NextColor())),
+                new DcelVertex(new ColouredVertex(new Vector3((1.5f*l)/3, l,  -l/3f), RandomColorGenerator.NextColor()))
             };
 
             var edges = Enumerable.Range(0, 12).Select( x => new DcelHalfEdge()).ToArray();
@@ -62,13 +62,13 @@ namespace OpenTkPlayground.GameObjects
             //e4
             edges[4].IncidentFace = _faces[1];
             edges[4].TargetVertex = vertices[3];
-            edges[4].Next = edges[4];
+            edges[4].Next = edges[5];
             edges[4].Previous = edges[3];
             edges[4].Twin = edges[11];
             //e5
             edges[5].IncidentFace = _faces[1];
             edges[5].TargetVertex = vertices[1];
-            edges[5].Next = edges[5];
+            edges[5].Next = edges[3];
             edges[5].Previous = edges[4];
             edges[5].Twin = edges[7];
 
@@ -113,37 +113,6 @@ namespace OpenTkPlayground.GameObjects
             edges[11].Next = edges[9];
             edges[11].Previous = edges[10];
             edges[11].Twin = edges[4];
-
-
-            //var wingedEdges = new List<WingedEdge>()
-            //{
-            //    new WingedEdge
-            //    {
-
-            //    }
-            //};
-
-
-            //var edge1 = new WingedEdge();
-            //var edge2 = new WingedEdge();
-            //var edge3 = new WingedEdge();
-
-            //var wev1 = new WingedEdgeVertex
-            //{
-            //    ColouredVertex = new ColouredVertex(new Vector3(-1f * (0.01f * random.Next(100)), -1, -1), Color4.Lime),
-            //    Edges = new List<WingedEdge>() { edge1, }
-            //};
-
-            //var wev2 = new WingedEdgeVertex
-            //{
-            //    ColouredVertex = new ColouredVertex(new Vector3(1, 1, -1), Color4.Red)
-            //};
-
-            //var wev3 = new WingedEdgeVertex
-            //{
-            //    ColouredVertex = new ColouredVertex(new Vector3(1f * (0.01f * random.Next(100)), -1, -1), Color4.Blue)
-            //};
-
         }
 
         internal void Draw(VertexBuffer<ColouredVertex> vertexBuffer)

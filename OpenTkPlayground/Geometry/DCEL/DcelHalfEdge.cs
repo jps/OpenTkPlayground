@@ -1,6 +1,6 @@
 namespace OpenTkPlayground.Geometry.DCEL
 {
-    internal class DcelHalfEdge
+    public class DcelHalfEdge
     {
         public DcelHalfEdge Next { get; set; }
 

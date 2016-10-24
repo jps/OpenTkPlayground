@@ -75,12 +75,13 @@ namespace OpenTkPlayground
 
                 long updateCount = 0;
                 var random = new Random();
-                
+
+                var tetrahedron = new RegularTetrahedron();
 
                 win.UpdateFrame += (s, e) =>
                 {
+                    var keyboardState = win.Keyboard.GetState();
                     
-
                     // create and fill a vertex buffer
                     vertexBuffer = new VertexBuffer<ColouredVertex>(ColouredVertex.Size);
 
@@ -91,7 +92,6 @@ namespace OpenTkPlayground
                     //    vertexBuffer.AddVertex(new ColouredVertex(new Vector3(1f * (0.01f * updateCount), -1, -i), Color4.Blue));
                     //}
 
-                    var tetrahedron = new RegularTetrahedron();
 
                     tetrahedron.Draw(vertexBuffer);
 

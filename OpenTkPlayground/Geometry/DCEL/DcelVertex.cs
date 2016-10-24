@@ -1,6 +1,6 @@
 namespace OpenTkPlayground.Geometry.DCEL
 {
-    internal class DcelVertex
+    public class DcelVertex
     {
         public DcelVertex()
         {

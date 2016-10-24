@@ -2,7 +2,7 @@
 
 namespace OpenTkPlayground.Geometry.DCEL
 {
-    internal class DcelFace
+    public class DcelFace
     {
         /// <summary>
         /// A single edge which is part of this face
@@ -11,16 +11,15 @@ namespace OpenTkPlayground.Geometry.DCEL
 
         public IEnumerable<DcelHalfEdge> HalfEdges()
         {
-            var currentHalfEdge = HalfEdge;
+            yield return HalfEdge;
+                      
+            var currentHalfEdge = HalfEdge.Next;
 
-            do
+            while (currentHalfEdge != HalfEdge)
             {
-                var halfEdgeToYeild = currentHalfEdge;
-
-                currentHalfEdge = HalfEdge.Next;
-
-                yield return halfEdgeToYeild;                
-            } while (currentHalfEdge != HalfEdge);
+                yield return currentHalfEdge;
+                currentHalfEdge = currentHalfEdge.Next;
+            }
         }
 
     }
